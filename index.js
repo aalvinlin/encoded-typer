@@ -25,3 +25,17 @@ const selectNWords = n => {
     return wordsChosen;
 }
 
+const setUpText = event => {
+
+    let selectedWords = selectNWords(50).join(" ")
+
+    document.getElementById("textDisplay").textContent = selectedWords;
+
+}
+
+document.getElementById("plainTextButton").addEventListener("click", setUpText);
+document.getElementById("rot13Button").addEventListener("click", setUpText);
+document.getElementById("numberButton").addEventListener("click", setUpText);
+document.getElementById("pigpenButton").addEventListener("click", setUpText);
+document.getElementById("brailleButton").addEventListener("click", setUpText);
+document.getElementById("semaphoreButton").addEventListener("click", setUpText);
