@@ -1,6 +1,8 @@
 * {
     font-family: Verdana, Arial, Helvetica, sans-serif;
     box-sizing: border-box;
+
+    color: #333333;
 }
 
 #content {
@@ -8,6 +10,7 @@
     height: 95vh;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -40,4 +43,16 @@
 #encodingSelection button:hover, #encodingSelection button:active {
     background-color: #333333;
     color: #EEEEEE;
+}
+
+#textDisplay {
+    width: 50vw;
+    height: 50vh;
+
+    margin: 2rem auto;
+
+    font-size: 1.5rem;
+    line-height: 3rem;
+
+    font-family: 'Lucida Console', 'Courier New', monospace;
 }
