@@ -1,0 +1,43 @@
+* {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+#content {
+    width: 95vw;
+    height: 95vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#encodingSelection {
+
+    width: 80vw;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#encodingSelection button {
+
+    width: 30%;
+    margin: 1rem auto;
+    
+    height: 3rem;
+    font-size: 1.5rem;
+
+    border: 2px solid #333333;
+    background-color: transparent;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+#encodingSelection button:hover, #encodingSelection button:active {
+    background-color: #333333;
+    color: #EEEEEE;
+}
