@@ -1,3 +1,4 @@
+// selects N random words from top1000.js
 const selectNWords = n => {
 
     wordsChosen = new Array(n).fill(0);
@@ -23,3 +24,4 @@ const selectNWords = n => {
 
     return wordsChosen;
 }
+
