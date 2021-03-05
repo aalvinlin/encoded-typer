@@ -37,9 +37,35 @@ const selectNWords = n => {
 const setUpText = event => {
 
     let selectedWords = selectNWords(50);
+
+    // store generated words
     appState.generatedText = selectedWords;
 
-    document.getElementById("textDisplay").textContent = selectedWords.join(" ");
+    let textDisplay = document.getElementById("textDisplay");
+
+    // remove any previous text
+    while (textDisplay.firstElementChild)
+        { textDisplay.firstElementChild.remove(); }
+
+    // create individual divs for words and letters
+    selectedWords.forEach((word, index) => {
+        let currentWord = document.createElement("div");
+        currentWord.classList.add("wordBox");
+
+        // add a space after the word, if not the last word in the text
+        if (index < word.length - 1)
+            { word += " "; }
+
+        word.split("").forEach(letter => {
+            let currentLetter = document.createElement("div");
+            currentLetter.classList.add("letterBox");
+            currentLetter.textContent = letter;
+
+            currentWord.appendChild(currentLetter);
+        })
+
+        textDisplay.appendChild(currentWord);
+    })
 }
 
 document.getElementById("plainTextButton").addEventListener("click", setUpText);
