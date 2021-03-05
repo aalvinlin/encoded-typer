@@ -1,3 +1,12 @@
+// store state of application
+appState = {
+    hasStartedTyping: false,
+    startTime: null,
+    endTime: null,
+    generatedText: [],
+    typedText: []
+}
+
 // selects N random words from top1000.js
 const selectNWords = n => {
 
@@ -27,9 +36,10 @@ const selectNWords = n => {
 
 const setUpText = event => {
 
-    let selectedWords = selectNWords(50).join(" ")
+    let selectedWords = selectNWords(50);
+    appState.generatedText = selectedWords;
 
-    document.getElementById("textDisplay").textContent = selectedWords;
+    document.getElementById("textDisplay").textContent = selectedWords.join(" ");
 }
 
 document.getElementById("plainTextButton").addEventListener("click", setUpText);
@@ -38,11 +48,3 @@ document.getElementById("numberButton").addEventListener("click", setUpText);
 document.getElementById("pigpenButton").addEventListener("click", setUpText);
 document.getElementById("brailleButton").addEventListener("click", setUpText);
 document.getElementById("semaphoreButton").addEventListener("click", setUpText);
-
-// store state of application
-appState = {
-    hasStartedTyping: false,
-    startTime: null,
-    endTime: null,
-    typedText = []
-}
