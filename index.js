@@ -53,7 +53,7 @@ const setUpText = event => {
         currentWord.classList.add("wordBox");
 
         // add a space after the word, if not the last word in the text
-        if (index < word.length - 1)
+        if (index < selectedWords.length - 1)
             { word += " "; }
 
         word.split("").forEach(letter => {
