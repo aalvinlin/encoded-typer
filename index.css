@@ -54,5 +54,23 @@
     font-size: 1.5rem;
     line-height: 3rem;
 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.wordBox {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+}
+
+.letterBox {
+    margin: 0;
+    padding: 0;
+
+    width: 1rem;
+   
     font-family: 'Lucida Console', 'Courier New', monospace;
 }
