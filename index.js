@@ -1,11 +1,15 @@
 // store state of application
-appState = {
+defaultAppState = {
     hasStartedTyping: false,
     startTime: null,
     endTime: null,
     generatedText: [],
-    typedText: []
+    typedText: [],
+    currentWordIndex: 0,
+    currentLetterIndex: 0
 }
+
+appState = {...defaultAppState};
 
 // selects N random words from top1000.js
 const selectNWords = n => {
@@ -35,6 +39,9 @@ const selectNWords = n => {
 }
 
 const setUpText = event => {
+
+    // reset any previous data in appState before starting
+    appState = {...defaultAppState};
 
     let selectedWords = selectNWords(50);
 
@@ -68,9 +75,25 @@ const setUpText = event => {
     })
 }
 
+const processKeyPress = event => {
+
+    // ignore if text has not been generated yet
+    if (!appState.generatedText || !appState.generatedText[0])
+        { return; }
+
+    // if text has been generated, user hasn't typed anything yet, and the key press matches the first letter, set flag for started typing
+    if (!appState.hasStartedTyping && event.key === appState.generatedText[0][0])
+        {
+            appState.hasStartedTyping = true;
+            appState.startTime = Date.now();
+        }
+}
+
 document.getElementById("plainTextButton").addEventListener("click", setUpText);
 document.getElementById("rot13Button").addEventListener("click", setUpText);
 document.getElementById("numberButton").addEventListener("click", setUpText);
 document.getElementById("pigpenButton").addEventListener("click", setUpText);
 document.getElementById("brailleButton").addEventListener("click", setUpText);
 document.getElementById("semaphoreButton").addEventListener("click", setUpText);
+
+document.addEventListener("keydown", processKeyPress);
