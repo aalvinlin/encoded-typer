@@ -43,7 +43,7 @@ const setUpText = event => {
     // reset any previous data in appState before starting
     appState = {...defaultAppState};
 
-    let selectedWords = selectNWords(50);
+    let selectedWords = selectNWords(25);
 
     // store generated words
     appState.generatedText = selectedWords;
@@ -90,6 +90,11 @@ const processKeyPress = event => {
 
     // if keypress was correct, update application state
     let currentWordDiv = document.getElementById("textDisplay").children[appState.currentWordIndex];
+
+    // if there are no more words, calculate results
+    if (!currentWordDiv)
+        { return; }
+
     let currentLetterDiv = currentWordDiv.children[appState.currentLetterIndex];
 
     let currentWordString = appState.generatedText[appState.currentWordIndex];
