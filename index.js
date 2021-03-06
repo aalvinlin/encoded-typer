@@ -87,6 +87,30 @@ const processKeyPress = event => {
             appState.hasStartedTyping = true;
             appState.startTime = Date.now();
         }
+
+    // if keypress was correct, update application state
+    let currentWordDiv = document.getElementById("textDisplay").children[appState.currentWordIndex];
+    let currentLetterDiv = currentWordDiv.children[appState.currentLetterIndex];
+
+    let currentWordString = appState.generatedText[appState.currentWordIndex];
+    let currentLetterChar = currentWordString[appState.currentLetterIndex];
+
+    if (event.key === currentLetterChar)
+        {
+            // update CSS class to show the letter was typed correctly
+            currentLetterDiv.classList.add("typedCorrect");
+
+            // if this is the last letter of the word, update both word index and letter index
+            if (appState.currentLetterIndex === currentWordString.length - 1)
+                {
+                    appState.currentWordIndex += 1;
+                    appState.currentLetterIndex = 0;
+                }
+            else
+                {
+                    appState.currentLetterIndex += 1;
+                }
+        }
 }
 
 document.getElementById("plainTextButton").addEventListener("click", setUpText);
