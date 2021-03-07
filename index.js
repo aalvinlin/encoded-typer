@@ -91,7 +91,7 @@ const processKeyPress = event => {
     // if keypress was correct, update application state
     let currentWordDiv = document.getElementById("textDisplay").children[appState.currentWordIndex];
 
-    // if there are no more words, calculate results
+    // if there are no more words, skip processing
     if (!currentWordDiv)
         { return; }
 
@@ -116,6 +116,19 @@ const processKeyPress = event => {
                     appState.currentLetterIndex += 1;
                 }
         }
+    
+    // if there are no more words, calculate results
+    if (!currentWordDiv)
+        {
+            appState.endTime = Date.now();
+            let elapsedTime = appState.endTime - appState.startTime;
+
+            let totalCharacters = appState.generatedText.join("").length;
+            let wpm = Math.floor((totalCharacters / 5) / (elapsedTime / 36000));
+
+            console.log(totalCharacters, wpm);
+        }
+
 }
 
 document.getElementById("plainTextButton").addEventListener("click", setUpText);
