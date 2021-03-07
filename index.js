@@ -43,7 +43,7 @@ const setUpText = event => {
     // reset any previous data in appState before starting
     appState = {...defaultAppState};
 
-    let selectedWords = selectNWords(25);
+    let selectedWords = selectNWords(10);
 
     // store generated words
     appState.generatedText = selectedWords;
@@ -118,15 +118,13 @@ const processKeyPress = event => {
         }
     
     // if there are no more words, calculate results
-    if (!currentWordDiv)
+    if (!currentWordDiv.nextElementSibling && !currentLetterDiv.nextElementSibling)
         {
             appState.endTime = Date.now();
             let elapsedTime = appState.endTime - appState.startTime;
 
-            let totalCharacters = appState.generatedText.join("").length;
-            let wpm = Math.floor((totalCharacters / 5) / (elapsedTime / 36000));
-
-            console.log(totalCharacters, wpm);
+            let totalCharacters = appState.generatedText.join(" ").length;
+            let wpm = Math.floor((totalCharacters / 5) / (elapsedTime / 60000));
         }
 
 }
