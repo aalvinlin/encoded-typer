@@ -40,6 +40,9 @@ const selectNWords = n => {
 
 const setUpText = event => {
 
+    // prevent space bar from pushing the button again by removing focus from the button
+    event.target.blur();
+
     // reset any previous data in appState before starting
     appState = {...defaultAppState};
 
