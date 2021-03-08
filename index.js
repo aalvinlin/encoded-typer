@@ -84,8 +84,12 @@ const setUpText = (event, encodingType) => {
             currentLetter.classList.add("letterBox");
 
             // transform letter into encoding
-
-            currentLetter.textContent = letter;
+            if (encodingType === "rot13")
+                { currentLetter.textContent = alphabetToRot13[letter]; }
+            else if (encodingType === "number")
+                { currentLetter.textContent = alphabetToNumber[letter]; }
+            else
+                { currentLetter.textContent = letter; }
 
             currentWord.appendChild(currentLetter);
         })
