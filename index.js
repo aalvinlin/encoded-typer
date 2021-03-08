@@ -38,7 +38,20 @@ const selectNWords = n => {
     return wordsChosen;
 }
 
-const setUpText = event => {
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
+const alphabetToRot13 = {};
+const alphabetToNumber = {};
+
+for (let i = 0; i < alphabet.length; i += 1)
+    {
+        alphabetToRot13[alphabet[i]] = alphabet[(i + 13) % 26];
+        alphabetToNumber[alphabet[i]] = i + 1;
+    }
+
+console.log(alphabetToRot13);
+console.log(alphabetToNumber);
+
+const setUpText = (event, encodingType) => {
 
     // prevent space bar from pushing the button again by removing focus from the button
     event.target.blur();
@@ -72,6 +85,9 @@ const setUpText = event => {
         word.split("").forEach(letter => {
             let currentLetter = document.createElement("div");
             currentLetter.classList.add("letterBox");
+
+            // transform letter into encoding
+
             currentLetter.textContent = letter;
 
             currentWord.appendChild(currentLetter);
@@ -155,11 +171,11 @@ const clearResults = () => {
     document.getElementById("results").textContent = "";
 }
 
-document.getElementById("plainTextButton").addEventListener("click", setUpText);
-document.getElementById("rot13Button").addEventListener("click", setUpText);
-document.getElementById("numberButton").addEventListener("click", setUpText);
-document.getElementById("pigpenButton").addEventListener("click", setUpText);
-document.getElementById("brailleButton").addEventListener("click", setUpText);
-document.getElementById("semaphoreButton").addEventListener("click", setUpText);
+document.getElementById("plainTextButton").addEventListener("click", event => setUpText(event, "plainText"));
+document.getElementById("rot13Button").addEventListener("click", event => setUpText(event, "rot13"));
+document.getElementById("numberButton").addEventListener("click", event => setUpText(event, "number"));
+document.getElementById("pigpenButton").addEventListener("click", event => setUpText(event, "pigpen"));
+document.getElementById("brailleButton").addEventListener("click", event => setUpText(event, "braille"));
+document.getElementById("semaphoreButton").addEventListener("click", event => setUpText(event, "semaphore"));
 
 document.addEventListener("keydown", processKeyPress);
