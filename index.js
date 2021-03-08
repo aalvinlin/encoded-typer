@@ -43,6 +43,9 @@ const setUpText = event => {
     // prevent space bar from pushing the button again by removing focus from the button
     event.target.blur();
 
+    // hide any previous results
+    hideResults();
+
     // reset any previous data in appState before starting
     appState = {...defaultAppState};
 
@@ -146,6 +149,10 @@ const displayResults = (elapsedTime, totalCharacters, wpm) => {
 
     results.appendChild(h2);
     results.appendChild(paragraph);
+}
+
+const hideResults = () => {
+    document.getElementById("results").textContent = "";
 }
 
 document.getElementById("plainTextButton").addEventListener("click", setUpText);
