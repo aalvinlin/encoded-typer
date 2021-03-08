@@ -82,6 +82,7 @@ const setUpText = (event, encodingType) => {
         word.split("").forEach(letter => {
             let currentLetter = document.createElement("div");
             currentLetter.classList.add("letterBox");
+            currentLetter.classList.add(encodingType);
 
             // transform letter into encoding
             if (encodingType === "rot13")
