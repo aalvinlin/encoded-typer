@@ -48,9 +48,6 @@ for (let i = 0; i < alphabet.length; i += 1)
         alphabetToNumber[alphabet[i]] = i + 1;
     }
 
-console.log(alphabetToRot13);
-console.log(alphabetToNumber);
-
 const setUpText = (event, encodingType) => {
 
     // prevent space bar from pushing the button again by removing focus from the button
