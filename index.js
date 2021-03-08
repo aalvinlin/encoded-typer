@@ -127,7 +127,7 @@ const processKeyPress = event => {
     let currentWordString = appState.generatedText[appState.currentWordIndex];
     let currentLetterChar = currentWordString[appState.currentLetterIndex];
 
-    if (event.key === currentLetterChar)
+    if (event.key === currentLetterChar || (currentLetterChar === " " && event.key === "Enter"))
         {
             // update CSS class to show the letter was typed correctly
             currentLetterDiv.classList.add("typedCorrect");
