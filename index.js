@@ -127,9 +127,25 @@ const processKeyPress = event => {
             let elapsedTime = appState.endTime - appState.startTime;
 
             let totalCharacters = appState.generatedText.join(" ").length;
-            let wpm = Math.floor((totalCharacters / 5) / (elapsedTime / 60000));
+            let wpm = Math.round((totalCharacters / 5) / (elapsedTime / 60000));
+
+            displayResults(elapsedTime, totalCharacters, wpm);
         }
 
+}
+
+const displayResults = (elapsedTime, totalCharacters, wpm) => {
+
+    const results = document.getElementById("results");
+
+    let h2 = document.createElement("h2");
+    h2.textContent = `${wpm} WPM`;
+
+    let paragraph = document.createElement("p");
+    paragraph.textContent = `(${totalCharacters} characters in ${Math.round(elapsedTime / 1000)} seconds)`;
+
+    results.appendChild(h2);
+    results.appendChild(paragraph);
 }
 
 document.getElementById("plainTextButton").addEventListener("click", setUpText);
