@@ -145,7 +145,7 @@ const displayResults = (elapsedTime, totalCharacters, wpm) => {
     h2.textContent = `${wpm} WPM`;
 
     let paragraph = document.createElement("p");
-    paragraph.textContent = `(${totalCharacters} characters in ${Math.round(elapsedTime / 1000)} seconds)`;
+    paragraph.textContent = `(${totalCharacters} characters in ${Math.round(elapsedTime / 100) / 10} seconds)`;
 
     results.appendChild(h2);
     results.appendChild(paragraph);
