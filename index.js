@@ -121,19 +121,19 @@ const processKeyPress = event => {
                 {
                     appState.currentLetterIndex += 1;
                 }
-        }
-    
-    // if there are no more words, calculate results
-    if (!currentWordDiv.nextElementSibling && !currentLetterDiv.nextElementSibling)
-        {
-            appState.endTime = Date.now();
-            let elapsedTime = appState.endTime - appState.startTime;
+                
+            // if there are no more words, calculate results
+            if (!currentWordDiv.nextElementSibling && !currentLetterDiv.nextElementSibling)
+                {
+                    appState.endTime = Date.now();
+                    let elapsedTime = appState.endTime - appState.startTime;
 
-            let totalCharacters = appState.generatedText.join(" ").length;
-            let wpm = Math.round((totalCharacters / 5) / (elapsedTime / 60000));
+                    let totalCharacters = appState.generatedText.join(" ").length;
+                    let wpm = Math.round((totalCharacters / 5) / (elapsedTime / 60000));
 
-            displayResults(elapsedTime, totalCharacters, wpm);
-        }
+                    displayResults(elapsedTime, totalCharacters, wpm);
+                }
+    }
 
 }
 
