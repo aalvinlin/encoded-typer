@@ -50,7 +50,7 @@
     width: 75vw;
     max-width: 800px;
 
-    height: 50vh;
+    min-height: 25vh;
 
     margin: 2rem auto;
 
@@ -81,4 +81,21 @@
 
 .typedCorrect {
     color: #CCCCCC;
+}
+
+#results {
+
+    min-height: 25vh;
+
+    text-align: center;
+    color: #333333;
+}
+
+#results h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+#results p {
+    font-size: 1rem;
 }
