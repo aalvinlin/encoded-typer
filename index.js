@@ -6,7 +6,8 @@ defaultAppState = {
     generatedText: [],
     typedText: [],
     currentWordIndex: 0,
-    currentLetterIndex: 0
+    currentLetterIndex: 0,
+    encodingType: null
 }
 
 appState = {...defaultAppState};
@@ -58,6 +59,8 @@ const setUpText = (event, encodingType) => {
 
     // reset any previous data in appState before starting
     appState = {...defaultAppState};
+
+    appState.encodingType = encodingType;
 
     let selectedWords = selectNWords(10);
 
@@ -128,6 +131,10 @@ const processKeyPress = event => {
         {
             // update CSS class to show the letter was typed correctly
             currentLetterDiv.classList.add("typedCorrect");
+
+            // reveal plaintext letter
+            currentLetterDiv.classList.remove(appState.encodingType);
+            currentLetterDiv.textContent = currentLetterChar;
 
             // if this is the last letter of the word, update both word index and letter index
             if (appState.currentLetterIndex === currentWordString.length - 1)
