@@ -44,7 +44,7 @@ const setUpText = event => {
     event.target.blur();
 
     // hide any previous results
-    hideResults();
+    clearResults();
 
     // reset any previous data in appState before starting
     appState = {...defaultAppState};
@@ -151,7 +151,7 @@ const displayResults = (elapsedTime, totalCharacters, wpm) => {
     results.appendChild(paragraph);
 }
 
-const hideResults = () => {
+const clearResults = () => {
     document.getElementById("results").textContent = "";
 }
 
