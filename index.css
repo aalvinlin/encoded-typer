@@ -26,7 +26,7 @@
     align-items: center;
 }
 
-#encodingSelection button {
+button {
 
     width: 30%;
     margin: 1rem auto;
@@ -41,7 +41,7 @@
     cursor: pointer;
 }
 
-#encodingSelection button:hover, #encodingSelection button:active {
+button:hover, button:active, button:focus {
     background-color: #333333;
     color: #EEEEEE;
 }
@@ -101,6 +101,7 @@
 }
 
 #results {
+    width: 80vw;
 
     min-height: 25vh;
 
@@ -115,6 +116,10 @@
 
 #results p {
     font-size: 1rem;
+}
+
+#results button {
+    width: 40%;
 }
 
 .braille img {
