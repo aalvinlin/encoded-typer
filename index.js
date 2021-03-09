@@ -184,8 +184,13 @@ const displayResults = (elapsedTime, totalCharacters, wpm) => {
     let paragraph = document.createElement("p");
     paragraph.textContent = `(${totalCharacters} characters in ${Math.round(elapsedTime / 100) / 10} seconds)`;
 
+    let button = document.createElement("button");
+    button.textContent = "Generate New Text";
+    button.addEventListener("click", event => setUpText(event, appState.encodingType));
+
     results.appendChild(h2);
     results.appendChild(paragraph);
+    results.appendChild(button);
 }
 
 const clearResults = () => {
