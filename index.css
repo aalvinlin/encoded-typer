@@ -54,9 +54,6 @@
 
     margin: 2rem auto;
 
-    font-size: 2rem;
-    line-height: 4rem;
-
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -74,15 +71,30 @@
     margin: 0;
     padding: 0;
 
-    width: 2rem;
-   
+    width: 1.25rem;
+
+    font-size: 2rem;    
+    line-height: 4rem;
+
     font-family: 'Lucida Console', 'Courier New', monospace;
     text-align: center;
 }
 
 .letterBox.number {
+    width: 2rem;
+
     font-size: 1.25rem;
+    line-height: 3rem;
 }
+
+
+.letterBox.braille {
+    width: 3rem;
+    
+    font-size: 3rem;
+    line-height: 6rem;
+}
+
 
 .typedCorrect {
     color: #CCCCCC;
@@ -103,12 +115,6 @@
 
 #results p {
     font-size: 1rem;
-}
-
-.letterBox.braille {
-    font-size: 3rem;
-    width: 3rem;
-    line-height: 6rem;
 }
 
 .braille img {
