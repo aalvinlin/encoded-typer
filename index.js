@@ -146,7 +146,6 @@ const processKeyPress = event => {
             currentLetterDiv.classList.add("typedCorrect");
 
             // reveal plaintext letter
-            currentLetterDiv.classList.remove(appState.encodingType);
             currentLetterDiv.textContent = currentLetterChar;
 
             // if this is the last letter of the word, update both word index and letter index

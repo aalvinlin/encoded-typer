@@ -105,6 +105,12 @@
     font-size: 1rem;
 }
 
+.letterBox.braille {
+    font-size: 3rem;
+    width: 3rem;
+    line-height: 6rem;
+}
+
 .braille img {
     width: 60%;
 }
