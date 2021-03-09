@@ -88,10 +88,23 @@ const setUpText = (event, encodingType) => {
             currentLetter.classList.add(encodingType);
 
             // transform letter into encoding
-            if (encodingType === "rot13")
+            if (letter === " ")
+                { currentLetter.textContent = letter; }
+            
+            else if (encodingType === "rot13")
                 { currentLetter.textContent = alphabetToRot13[letter]; }
+            
             else if (encodingType === "number")
                 { currentLetter.textContent = alphabetToNumber[letter]; }
+            
+            else if (encodingType === "braille")
+                {
+                    let img = document.createElement("img");
+                    img.setAttribute("src", `images/${encodingType}_${letter}.svg`);
+
+                    currentLetter.appendChild(img);
+                }
+            
             else
                 { currentLetter.textContent = letter; }
 
