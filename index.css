@@ -81,10 +81,10 @@ button:hover, button:active, button:focus {
 }
 
 .letterBox.number {
-    width: 2rem;
+    width: 2.75rem;
 
-    font-size: 1.25rem;
-    line-height: 3rem;
+    font-size: 2rem;
+    line-height: 4rem;
 }
 
 
