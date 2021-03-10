@@ -109,6 +109,17 @@ button:hover, button:active, button:focus {
     width: 80%;
 }
 
+.letterBox.semaphore {
+    width: 3rem;
+    
+    font-size: 3rem;
+    line-height: 4rem;
+}
+
+.semaphore img {
+    width: 80%;
+}
+
 .typedCorrect {
     color: #CCCCCC;
 }
