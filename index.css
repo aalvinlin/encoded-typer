@@ -46,6 +46,22 @@ button:hover, button:active, button:focus {
     color: #EEEEEE;
 }
 
+#options input {
+    width: 4rem;
+    
+    border: 2px solid #333333;
+    border-radius: 5px;
+    
+    padding: 0.25rem;
+
+    text-align: center;
+}
+
+#options input:hover, #options input:active, #options input:focus {
+    background-color: #333333;
+    color: #EEEEEE;
+}
+
 #textDisplay {
     width: 75vw;
     max-width: 800px;
