@@ -84,7 +84,7 @@ const setUpText = (event, encodingType) => {
             else if (encodingType === "number")
                 { currentLetter.textContent = alphabetToNumber[letter]; }
             
-            else if (encodingType === "braille" || encodingType === "pigpen")
+            else if (encodingType === "braille" || encodingType === "pigpen" || encodingType === "semaphore")
                 {
                     let img = document.createElement("img");
                     img.setAttribute("src", `images/${encodingType}_${letter}.svg`);
