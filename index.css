@@ -87,7 +87,6 @@ button:hover, button:active, button:focus {
     line-height: 4rem;
 }
 
-
 .letterBox.braille {
     width: 3rem;
     
@@ -95,6 +94,20 @@ button:hover, button:active, button:focus {
     line-height: 6rem;
 }
 
+.braille img {
+    width: 60%;
+}
+
+.letterBox.pigpen {
+    width: 2rem;
+    
+    font-size: 3rem;
+    line-height: 4rem;
+}
+
+.pigpen img {
+    width: 80%;
+}
 
 .typedCorrect {
     color: #CCCCCC;
@@ -120,8 +133,4 @@ button:hover, button:active, button:focus {
 
 #results button {
     width: 40%;
-}
-
-.braille img {
-    width: 60%;
 }
