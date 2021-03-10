@@ -19,7 +19,7 @@ const selectNWords = n => {
 
     for (let i = 0; i < n; i += 1)
         {
-            let totalItemsToChooseFrom = 1000;
+            let totalItemsToChooseFrom = 2;
             wordsChosen[i] = top1000[Math.floor(Math.random() * totalItemsToChooseFrom)];
         }
 
