@@ -21,7 +21,7 @@ const selectNWords = n => {
 
     for (let i = 0; i < n; i += 1)
         {
-            let totalItemsToChooseFrom = 3;
+            let totalItemsToChooseFrom = appState.subsetSize;
             wordsChosen[i] = top1000[Math.floor(Math.random() * totalItemsToChooseFrom)];
         }
 
@@ -40,18 +40,21 @@ for (let i = 0; i < alphabet.length; i += 1)
 
 const setUpText = (event, encodingType) => {
 
-    // prevent space bar from pushing the button again by removing focus from the button
-    event.target.blur();
+    // if button pressed, remove focus from the button so user can begin typing
+    // maintain focus if this function was called from a number input
+    if (event.target.type === "button")
+        { event.target.blur(); }
 
     // hide any previous results
     clearResults();
 
-    // reset any previous data in appState before starting
-    appState = {...defaultAppState};
+    // reset any previous data (except wordsToGenerate and subsetSize) in appState before starting
+    let {wordsToGenerate, subsetSize} = appState;
+    appState = {...defaultAppState, wordsToGenerate, subsetSize};
 
     appState.encodingType = encodingType;
 
-    let selectedWords = selectNWords(10);
+    let selectedWords = selectNWords(appState.wordsToGenerate);
 
     // store generated words
     appState.generatedText = selectedWords;
@@ -124,7 +127,6 @@ const updateTextSettings = (event, settingName) => {
                 { return; }
 
             appState.subsetSize = value;
-            
         }
     
     // if an encoding has already been chosen, regenerate text
