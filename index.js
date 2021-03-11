@@ -216,6 +216,11 @@ const clearResults = () => {
     document.getElementById("results").textContent = "";
 }
 
+// Some browsers will preserve user input across screen refreshes.
+// Load any such inputs (or the default input values) into application state.
+window.addEventListener("load", () => appState.wordsToGenerate = document.getElementById("wordsToGenerate").value);
+window.addEventListener("load", () => appState.subsetSize = document.getElementById("subsetSize").value);
+
 document.getElementById("plainTextButton").addEventListener("click", event => setUpText(event, "plainText"));
 document.getElementById("rot13Button").addEventListener("click", event => setUpText(event, "rot13"));
 document.getElementById("numberButton").addEventListener("click", event => setUpText(event, "number"));
