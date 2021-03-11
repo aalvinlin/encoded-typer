@@ -42,7 +42,7 @@ const setUpText = (event, encodingType) => {
 
     // if button pressed, remove focus from the button so user can begin typing
     // maintain focus if this function was called from a number input
-    if (event.target.type === "button")
+    if (event.target.type === "submit")
         { event.target.blur(); }
 
     // hide any previous results
