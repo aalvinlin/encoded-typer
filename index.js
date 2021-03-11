@@ -7,7 +7,9 @@ defaultAppState = {
     typedText: [],
     currentWordIndex: 0,
     currentLetterIndex: 0,
-    encodingType: null
+    encodingType: null,
+    wordsToGenerate: 10,
+    subsetSize: 100
 }
 
 appState = {...defaultAppState};
@@ -102,6 +104,34 @@ const setUpText = (event, encodingType) => {
     })
 }
 
+const updateTextSettings = (event, settingName) => {
+
+    let value = parseInt(event.target.value);
+
+    if (settingName === "wordsToGenerate")
+        {
+            // total words must be between 1 and 100
+            if (value < 1 || value > 100)
+                { return; }
+
+            appState.wordsToGenerate = value;
+        }
+
+    else if (settingName === "subsetSize")
+        {
+            // subset size must be between 1 and 1000
+            if (value < 1 || value > 1000)
+                { return; }
+
+            appState.subsetSize = value;
+            
+        }
+    
+    // if an encoding has already been chosen, regenerate text
+    if (appState.encodingType)
+        { setUpText(event, appState.encodingType); }
+}
+
 const processKeyPress = event => {
 
     // ignore if text has not been generated yet
@@ -190,5 +220,8 @@ document.getElementById("numberButton").addEventListener("click", event => setUp
 document.getElementById("pigpenButton").addEventListener("click", event => setUpText(event, "pigpen"));
 document.getElementById("brailleButton").addEventListener("click", event => setUpText(event, "braille"));
 document.getElementById("semaphoreButton").addEventListener("click", event => setUpText(event, "semaphore"));
+
+document.getElementById("wordsToGenerate").addEventListener("input", event => updateTextSettings(event, "wordsToGenerate"));
+document.getElementById("subsetSize").addEventListener("input", event => updateTextSettings(event, "subsetSize"));
 
 document.addEventListener("keydown", processKeyPress);
