@@ -9,12 +9,13 @@ defaultAppState = {
     currentLetterIndex: 0,
     encodingType: null,
     wordsToGenerate: 10,
-    subsetSize: 100
+    subsetSize: 100,
+    wordList: "top1000"
 }
 
 appState = {...defaultAppState};
 
-// selects N random words from top1000.js
+// selects N random words from specified word list
 const selectNWords = n => {
 
     wordsChosen = new Array(n).fill(0);
@@ -22,7 +23,7 @@ const selectNWords = n => {
     for (let i = 0; i < n; i += 1)
         {
             let totalItemsToChooseFrom = appState.subsetSize;
-            wordsChosen[i] = top1000[Math.floor(Math.random() * totalItemsToChooseFrom)];
+            wordsChosen[i] = wordLists[appState.wordList][Math.floor(Math.random() * totalItemsToChooseFrom)];
         }
 
     return wordsChosen;
@@ -122,8 +123,8 @@ const updateTextSettings = (event, settingName) => {
 
     else if (settingName === "subsetSize")
         {
-            // subset size must be between 1 and 1000
-            if (value < 1 || value > 1000)
+            // subset size must be between 1 and length of word list
+            if (value < 1 || value > wordLists[appState.wordList].length)
                 { return; }
 
             appState.subsetSize = value;
