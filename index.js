@@ -17,7 +17,7 @@ appState = {...defaultAppState};
 
 // returns the entire array of words from the word list stored in state
 const getWords = () => {
-    return wordLists[appState.wordList];
+    return wordLists[appState.wordList].words;
 }
 
 // selects N random words from specified word list
