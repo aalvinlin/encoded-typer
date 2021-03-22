@@ -46,9 +46,7 @@ button:hover, button:active, button:focus {
     color: #EEEEEE;
 }
 
-#options input {
-    width: 4rem;
-    
+#options input, #options select {    
     border: 2px solid #333333;
     border-radius: 5px;
     
@@ -57,7 +55,12 @@ button:hover, button:active, button:focus {
     text-align: center;
 }
 
-#options input:hover, #options input:active, #options input:focus {
+#options input {
+    width: 4rem;
+}
+
+#options input:hover, #options input:active, #options input:focus,
+#options select:hover, #options select:active, #options select:focus {
     background-color: #333333;
     color: #EEEEEE;
 }

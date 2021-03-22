@@ -20,6 +20,23 @@ const getWords = () => {
     return wordLists[appState.wordList].words;
 }
 
+// on page load, prepopulate the dropdown menu with available word lists
+const loadWordLists = () => {
+
+    const select = document.getElementById("listDropdown");
+
+    for (let listShortName in wordLists)
+        {
+            let description = wordLists[listShortName].description;
+
+            let option = document.createElement("option");
+            option.value = listShortName;
+            option.textContent = description;
+
+            select.appendChild(option);
+        }
+}
+
 // selects N random words from specified word list
 const selectNWords = n => {
 
@@ -226,6 +243,8 @@ const clearResults = () => {
 // Load any such inputs (or the default input values) into application state.
 window.addEventListener("load", () => appState.wordsToGenerate = document.getElementById("wordsToGenerate").value);
 window.addEventListener("load", () => appState.subsetSize = document.getElementById("subsetSize").value);
+
+window.addEventListener("load", loadWordLists);
 
 document.getElementById("plainTextButton").addEventListener("click", event => setUpText(event, "plainText"));
 document.getElementById("rot13Button").addEventListener("click", event => setUpText(event, "rot13"));
