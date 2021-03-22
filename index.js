@@ -15,6 +15,11 @@ defaultAppState = {
 
 appState = {...defaultAppState};
 
+// returns the entire array of words from the word list stored in state
+const getWords = () => {
+    return wordLists[appState.wordList];
+}
+
 // selects N random words from specified word list
 const selectNWords = n => {
 
@@ -23,7 +28,7 @@ const selectNWords = n => {
     for (let i = 0; i < n; i += 1)
         {
             let totalItemsToChooseFrom = appState.subsetSize;
-            wordsChosen[i] = wordLists[appState.wordList][Math.floor(Math.random() * totalItemsToChooseFrom)];
+            wordsChosen[i] = getWords()[Math.floor(Math.random() * totalItemsToChooseFrom)];
         }
 
     return wordsChosen;
@@ -124,7 +129,7 @@ const updateTextSettings = (event, settingName) => {
     else if (settingName === "subsetSize")
         {
             // subset size must be between 1 and length of word list
-            if (value < 1 || value > wordLists[appState.wordList].length)
+            if (value < 1 || value > getWords().length)
                 { return; }
 
             appState.subsetSize = value;
