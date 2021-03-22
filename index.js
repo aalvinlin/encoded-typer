@@ -151,9 +151,6 @@ const updateTextSettings = (event, settingName) => {
 
             appState.subsetSize = value;
         }
-    
-    // remove focus from dropdown menu
-    event.target.blur();
 
     // if an encoding has already been chosen, regenerate text
     if (appState.encodingType)
@@ -168,6 +165,9 @@ const updateWordList = event => {
     // update subset size in input field and in state variable
     appState.subsetSize = getWords().length;
     document.getElementById("subsetSize").value = appState.subsetSize;
+    
+    // remove focus from dropdown menu
+    event.target.blur();
 
     // if an encoding has already been chosen, regenerate text
     if (appState.encodingType)
