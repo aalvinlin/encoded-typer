@@ -71,9 +71,9 @@ const setUpText = (event, encodingType) => {
     // hide any previous results
     clearResults();
 
-    // reset any previous data (except wordsToGenerate and subsetSize) in appState before starting
-    let {wordsToGenerate, subsetSize} = appState;
-    appState = {...defaultAppState, wordsToGenerate, subsetSize};
+    // reset any previous data (except wordsToGenerate, subsetSize, and wordList) in appState before starting
+    let {wordsToGenerate, subsetSize, wordList} = appState;
+    appState = {...defaultAppState, wordsToGenerate, subsetSize, wordList};
 
     appState.encodingType = encodingType;
 
@@ -152,6 +152,23 @@ const updateTextSettings = (event, settingName) => {
             appState.subsetSize = value;
         }
     
+    // remove focus from dropdown menu
+    event.target.blur();
+
+    // if an encoding has already been chosen, regenerate text
+    if (appState.encodingType)
+        { setUpText(event, appState.encodingType); }
+}
+
+const updateWordList = event => {
+
+    let newList = event.target.value;
+    appState.wordList = newList;
+
+    // update subset size in input field and in state variable
+    appState.subsetSize = getWords().length;
+    document.getElementById("subsetSize").value = appState.subsetSize;
+
     // if an encoding has already been chosen, regenerate text
     if (appState.encodingType)
         { setUpText(event, appState.encodingType); }
@@ -255,5 +272,6 @@ document.getElementById("semaphoreButton").addEventListener("click", event => se
 
 document.getElementById("wordsToGenerate").addEventListener("input", event => updateTextSettings(event, "wordsToGenerate"));
 document.getElementById("subsetSize").addEventListener("input", event => updateTextSettings(event, "subsetSize"));
+document.getElementById("listDropdown").addEventListener("input", updateWordList);
 
 document.addEventListener("keydown", processKeyPress);
