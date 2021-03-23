@@ -57,8 +57,13 @@ const alphabetToNumber = {};
 
 for (let i = 0; i < alphabet.length; i += 1)
     {
+        // store both lowercase and uppercase letters for rot13
         alphabetToRot13[alphabet[i]] = alphabet[(i + 13) % 26];
+        alphabetToRot13[alphabet[i].toUpperCase()] = alphabet[(i + 13) % 26].toUpperCase();
+
+        // store both lowercase and uppercase letters for number
         alphabetToNumber[alphabet[i]] = i + 1;
+        alphabetToNumber[alphabet[i].toUpperCase()] = i + 1;
     }
 
 const setUpText = (event, encodingType) => {
