@@ -199,7 +199,10 @@ const processKeyPress = event => {
         { return; }
 
     // if text has been generated, user hasn't typed anything yet, and the key press matches the first letter, set flag for started typing
-    if (!appState.hasStartedTyping && event.key === appState.generatedText[0][0])
+    const firstLetterOfText = appState.generatedText[0][0];
+
+    // check if keypress matches the first letter of text (even if shift key wasn't pressed). Some encoding don't distinguish between uppercase and lowercase.
+    if (!appState.hasStartedTyping && (event.key === firstLetterOfText || event.key === firstLetterOfText.toLowerCase()))
         {
             appState.hasStartedTyping = true;
             appState.startTime = Date.now();
@@ -217,7 +220,9 @@ const processKeyPress = event => {
     let currentWordString = appState.generatedText[appState.currentWordIndex];
     let currentLetterChar = currentWordString[appState.currentLetterIndex];
 
-    if (event.key === currentLetterChar || (currentLetterChar === " " && event.key === "Enter"))
+    // check whether keypress matches (even if shift key wasn't pressed). Some encoding don't distinguish between uppercase and lowercase.
+    // allow "enter" key to be used to advance to next word
+    if (event.key === currentLetterChar || event.key === currentLetterChar.toLowerCase() || (currentLetterChar === " " && event.key === "Enter"))
         {
             // update CSS class to show the letter was typed correctly
             currentLetterDiv.classList.add("typedCorrect");
