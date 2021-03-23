@@ -145,11 +145,21 @@ const updateTextSettings = (event, settingName) => {
 
     else if (settingName === "subsetSize")
         {
-            // subset size must be between 1 and length of word list
-            if (value < 1 || value > getWords().length)
-                { return; }
+            const newListLength = getWords().length;
 
-            appState.subsetSize = value;
+            // subset size must be between 1 and length of word list
+            if (value < 1)
+                { appState.subsetSize = 1; }
+            
+            // previously-valid values can become invalid when word list is changed
+            else if (value <= newListLength)
+                { appState.subsetSize = value; }
+            
+            else if (value > newListLength)
+                { appState.subsetSize = newListLength; }
+            
+            // update value in input box
+            document.getElementById("subsetSize").value = appState.subsetSize;
         }
 
     // if an encoding has already been chosen, regenerate text
@@ -162,9 +172,12 @@ const updateWordList = event => {
     let newList = event.target.value;
     appState.wordList = newList;
 
-    // update subset size in input field and in state variable
-    appState.subsetSize = getWords().length;
-    document.getElementById("subsetSize").value = appState.subsetSize;
+    // if current subset size is too big, update subset size in input field and in state variable
+    if (appState.subsetSize > getWords().length)
+        {
+            appState.subsetSize = getWords().length;
+            document.getElementById("subsetSize").value = appState.subsetSize;
+        }
     
     // remove focus from dropdown menu
     event.target.blur();
