@@ -66,6 +66,17 @@ for (let i = 0; i < alphabet.length; i += 1)
         alphabetToNumber[alphabet[i].toUpperCase()] = i + 1;
     }
 
+const punctuation_symbols = {
+    "'": "apostrophe",
+    ":": "colon",
+    ",": "comma",
+    "!": "exclamation",
+    "-": "hyphen",
+    ".": "period",
+    "?": "question",
+    ";": "semicolon"
+}
+
 const setUpText = (event, encodingType) => {
 
     // if button pressed, remove focus from the button so user can begin typing
@@ -108,7 +119,25 @@ const setUpText = (event, encodingType) => {
             currentLetter.classList.add(encodingType);
 
             // transform letter into encoding
-            if (letter === " ")
+            // if a punctuation symbol such as a period or hypen is seen, display as is (except if encoding is Braille)
+            if (punctuation_symbols[letter])
+                {
+                    if (encodingType === "braille")
+                        {
+                            letter = punctuation_symbols[letter];
+
+                            let img = document.createElement("img");
+                            img.setAttribute("src", `images/${encodingType}_${letter}.svg`);
+
+                            currentLetter.appendChild(img);
+                        }
+                    else
+                        {
+                            currentLetter.textContent = letter;
+                        }
+                }
+                
+            else if (letter === " ")
                 { currentLetter.textContent = letter; }
             
             else if (encodingType === "rot13")
@@ -117,6 +146,7 @@ const setUpText = (event, encodingType) => {
             else if (encodingType === "number")
                 { currentLetter.textContent = alphabetToNumber[letter]; }
             
+            // display alphabet letters as images
             else if (encodingType === "braille" || encodingType === "pigpen" || encodingType === "semaphore")
                 {
                     let img = document.createElement("img");
@@ -125,6 +155,7 @@ const setUpText = (event, encodingType) => {
                     currentLetter.appendChild(img);
                 }
             
+            // display unknown symbols as is
             else
                 { currentLetter.textContent = letter; }
 
