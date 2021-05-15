@@ -23,6 +23,12 @@ Specify the length and contents of the ciphertext and begin typing. When you hav
 * HTML 5
 * CSS 3
 
+# Installation
+
+This project uses vanilla JavaScript, so no dependencies are required.
+
+After downloading the project, open index.html in your browser to begin using the app.
+
 # Roadmap
 
 Future releases may include the following:
